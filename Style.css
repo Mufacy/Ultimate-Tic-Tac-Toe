@@ -1,0 +1,13 @@
+#GameContainer {
+  height: 35em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#GameContainer p {
+  display: inline-block;
+}
+#GameContainer p table {
+  height: 180px;
+  width: 180px;
+}

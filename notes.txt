@@ -1,0 +1,5 @@
+- each tic-tac-toe is checkd seperatly
+
+- if one of the smaller grids is won its considerd an (O or X)
+- the bigger grid is same as samller grid when each of the samller grids is an (O Or X)
+- we only need to loop through the smaller non (O or X) grids

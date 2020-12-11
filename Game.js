@@ -1,9 +1,23 @@
 var Previous_Click; //store previous click incase user wants to change
 
+function delete_board() { 
+    var e = document.getElementById('GameContainer');
+    
+    //e.firstElementChild can be used. 
+    var child = e.lastElementChild;  
+    while (child) { 
+        e.removeChild(child); 
+        child = e.lastElementChild; 
+    } 
+} 
 function game_set()
 {
     //set game size to be dynamic
-    board_size = 3;//prompt("Please Enter the prefered board size \nExample: 3 is 3X3 board \n(3, 6, 9, n)","4");
+    do{
+        var board_size  = parseInt(prompt("Please enter a number from 1 to 100", "3"), 10);
+    }while(isNaN(board_size) || board_size > 100 || board_size < 1);
+    
+    delete_board();
     /* need to check if board size is not empty and is number first */
     var Board_Container = document.getElementById('GameContainer');
     for (PIndex = 0 ; PIndex < board_size ; PIndex++)

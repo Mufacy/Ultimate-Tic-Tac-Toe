@@ -1,6 +1,7 @@
 var Previous_Click; //store previous click incase user wants to change
 
-function delete_board() { 
+function delete_board() 
+{ 
     var e = document.getElementById('GameContainer');
     
     //e.firstElementChild can be used. 
@@ -10,6 +11,7 @@ function delete_board() {
         child = e.lastElementChild; 
     } 
 } 
+
 function game_set()
 {
     //set game size to be dynamic
@@ -19,6 +21,7 @@ function game_set()
     
     delete_board();
     /* need to check if board size is not empty and is number first */
+    CellIndex = 0;
     var Board_Container = document.getElementById('GameContainer');
     for (PIndex = 0 ; PIndex < board_size ; PIndex++)
     {
@@ -35,12 +38,36 @@ function game_set()
                 for (var i = 0; i < 3; i++) 
                 {   //loop creates 3 cells
                     var TData = document.createElement('td');
-                    TData.width ='75';
+                    TData.setAttribute("onclick", "cell_click(this);");
+                    TData.setAttribute("id", CellIndex++);
+                    TData.setAttribute("height", 30);
+                    TData.setAttribute("width", 30);
+                    var TypeHolder = document.createElement('span');
+                    TData.appendChild(TypeHolder);
                     tbl_row.appendChild(TData);
                 } 
             }
         }
         
+    }
+}
+
+function cell_click(mycell)
+{
+    if ((Previous_Click == null ) && (mycell.value == null))
+    {
+        alert("you set first option on "+mycell.id);
+        mycell.value = 'O';
+        mycell.setAttribute("class", "circle");
+        Previous_Click = mycell.id;
+    } 
+    else if (Previous_Click != mycell.id)
+    {
+        mycell.setAttribute("class", "circle");
+        mycell.value = 'O';
+        Previous_Click = mycell.id;
+        document.getElementById(Previous_Click).setAttribute("class", "");
+        alert("you moved option to new cell"+mycell.id);
     }
 }
 

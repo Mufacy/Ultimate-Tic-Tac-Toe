@@ -7,15 +7,23 @@ body {
   align-items: center;
   justify-content: center;
 }
-#GameContainer p {
-  display: inline-block;
-}
+
 #GameContainer p table {
   height: 180px;
   width: 180px;
 }
 
 #GameContainer p table tr td {
-  height: 25px;
+  height: 40px;
+  width: 40px;
   border: 1px solid black;
+}
+
+.circle span {
+  display: inline-block;
+  height: 23px;
+  width: 15px;
+  border-radius: 70%;
+  border: 5px solid #a6c0fe;
+  margin: 4px 5px 5px 14px;
 }

@@ -65,8 +65,8 @@ function cell_click(mycell)
     {
         mycell.setAttribute("class", "circle");
         mycell.value = 'O';
-        Previous_Click = mycell.id;
         document.getElementById(Previous_Click).setAttribute("class", "");
+        Previous_Click = mycell.id;
         alert("you moved option to new cell"+mycell.id);
     }
 }

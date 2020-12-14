@@ -39,9 +39,7 @@ function game_set()
                 {   //loop creates 3 cells
                     var TData = document.createElement('td');
                     TData.setAttribute("onclick", "cell_click(this);");
-                    TData.setAttribute("id", CellIndex++);
-                    TData.setAttribute("height", 30);
-                    TData.setAttribute("width", 30);
+                    TData.setAttribute("id", CellIndex++);  
                     var TypeHolder = document.createElement('span');
                     TData.appendChild(TypeHolder);
                     tbl_row.appendChild(TData);
@@ -56,18 +54,16 @@ function cell_click(mycell)
 {
     if ((Previous_Click == null ) && (mycell.value == null))
     {
-        alert("you set first option on "+mycell.id);
         mycell.value = 'O';
         mycell.setAttribute("class", "circle");
         Previous_Click = mycell.id;
     } 
     else if (Previous_Click != mycell.id)
     {
-        mycell.setAttribute("class", "circle");
+        mycell.setAttribute("class", "Exx");
         mycell.value = 'O';
         document.getElementById(Previous_Click).setAttribute("class", "");
         Previous_Click = mycell.id;
-        alert("you moved option to new cell"+mycell.id);
     }
 }
 

@@ -1,29 +1,65 @@
 body {
   background-color: #f5576c;
 }
-#GameContainer {
-  height: 35em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+#sidebar {
+  width: 400px;
+  height: 400px;
+  float: left;
+  align-content: center;
 }
 
-#GameContainer p table {
-  height: 180px;
-  width: 180px;
+#GameContainer {
+  display: flex;
+  justify-content: flex-start;
 }
 
 #GameContainer p table tr td {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border: 1px solid black;
 }
 
-.circle span {
+.Menubutton {
+  background-color: #ff9a9e; /* Green */
+  border: none;
+  color: #fecfef;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
-  height: 23px;
+  font-size: 16px;
+}
+
+.circle span {
+  float: left;
+  width: 50px;
+  height: 50px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-image: radial-gradient(#f5576c 0%, transparent 50%, #52555a 40%);
+}
+
+.Exx {
+  display: inline-block;
   width: 15px;
-  border-radius: 70%;
-  border: 5px solid #a6c0fe;
-  margin: 4px 5px 5px 14px;
+  height: 15px;
+  background: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 43%,
+      #52555a 45%,
+      #52555a 55%,
+      rgba(0, 0, 0, 0) 57%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(
+      135deg,
+      #f5576c 0%,
+      #f5576c 43%,
+      #52555a 45%,
+      #52555a 55%,
+      #f5576c 57%,
+      #f5576c 100%
+    );
 }

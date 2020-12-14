@@ -7,11 +7,14 @@
 </head>
 
 <body>
-    <p>
-        <h2 style = "display:inline"><input type="button" value="set game size" onclick="game_set()" /></h2>
-        <h2 style = "display:inline">Player 1 ( O ) turn</h2>
-    </p>
-    <DIV id="GameContainer"></DIV>
+    <div id="main">
+        <div id="sidebar">
+            <input class="Menubutton" type="button" value="set game size" onclick="game_set()" />
+            <h2 class="sideMenu">Player 1 ( O ) turn</h2>
+            <input class="Menubutton" type="button" value="Finish Turn" onclick="game_set()" />
+        </div>
+        <DIV id="GameContainer"></DIV>
+    </div>
 </body>
 
 </html>

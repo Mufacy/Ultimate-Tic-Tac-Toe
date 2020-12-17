@@ -1,6 +1,7 @@
 var Previous_Click; //store previous click incase user wants to change
+var input_type;
 
-function delete_board() 
+function delete_board() //this clears the board
 { 
     var e = document.getElementById('GameContainer');
     
@@ -14,10 +15,12 @@ function delete_board()
 
 function game_set()
 {
+    input_type = false;
     //set game size to be dynamic
-    do{
-        var board_size  = parseInt(prompt("Please enter a number from 1 to 100", "3"), 10);
-    }while(isNaN(board_size) || board_size > 100 || board_size < 1);
+    do
+    {
+        var board_size  = parseInt(prompt("Please enter a number from 1 to 3", "3"), 10);
+    }while(isNaN(board_size) || board_size > 3 || board_size < 1);
     
     delete_board();
     /* need to check if board size is not empty and is number first */
@@ -52,19 +55,26 @@ function game_set()
 
 function cell_click(mycell)
 {
-    if ((Previous_Click == null ) && (mycell.value == null))
+    if (mycell.value == null)
     {
+        label1 = document.getElementById("LBLplayerTurn") 
         mycell.value = 'O';
-        mycell.setAttribute("class", "circle");
+        if (input_type)
+        {
+            mycell.setAttribute("class", "circle");
+            input_type = !input_type;   
+            mycell.value = 'o';
+            label1.innerHTML = "Player 1 ( x ) turn";
+        }
+        else
+        {
+            mycell.setAttribute("class", "Exx");
+            input_type = !input_type;
+            mycell.value = 'x';
+            label1.innerHTML = "Player 1 ( o ) turn";
+        }
         Previous_Click = mycell.id;
     } 
-    else if (Previous_Click != mycell.id)
-    {
-        mycell.setAttribute("class", "Exx");
-        mycell.value = 'O';
-        document.getElementById(Previous_Click).setAttribute("class", "");
-        Previous_Click = mycell.id;
-    }
 }
 
 function game_start()
@@ -72,6 +82,6 @@ function game_start()
     Game = document.getElementById("GameContainer");
     for (i=0 ; i< Game.length; i++)
     {
-        
+
     }
 }

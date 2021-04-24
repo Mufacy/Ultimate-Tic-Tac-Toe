@@ -1,21 +1,9 @@
 var Previous_Click; //store previous click incase user wants to change
 var input_type;
 
-// function delete_board() {
-//   //this clears the board
-//   var e = document.getElementById("GameContainer");
-
-//   //e.firstElementChild can be used.
-//   var child = e.lastElementChild;
-//   while (child) {
-//     e.removeChild(child);
-//     child = e.lastElementChild;
-//   }
-// }
-
 function game_set() {
   input_type = false;
-  //set game size to be dynamic
+  //get the required game size
   do {
     var board_size = parseInt(
       prompt("Please enter a number from 1 to 3", "3"),
@@ -23,22 +11,36 @@ function game_set() {
     );
   } while (isNaN(board_size) || board_size > 3 || board_size < 1);
 
-  // delete_board();
+  // Empty the game board
+  $("#GameContainer").empty();
+
   /* need to check if board size is not empty and is number first */
   CellIndex = 0;
-  var Board_Container = document.getElementById("GameContainer");
+  tableIndex = 0;
   for (PIndex = 0; PIndex < board_size; PIndex++) {
-    var TBL_P = document.createElement("p");
-    Board_Container.appendChild(TBL_P);
-    $("#GameContainer").append('<p id="para' + id + '"> </p>');
+    $("#GameContainer").append('<p id="para' + PIndex + '"> </p>');
+
     for (TBLIndex = 0; TBLIndex < board_size; TBLIndex++) {
-      $("#para" + id).append('<table id="tbl' + id + "> </table>");
+      //create tables each table is a Tic, Tac, Toe Grid
+      $("#para" + PIndex).append(
+        '<table id="tbl' + ++tableIndex + '"> </table>'
+      );
+      //Loop to create the rows and cells in each table
       for (var j = 0; j < 3; j++) {
-        var row_template = $("#row-template").html;
-        row_template.replace(/@cell1@/g, CellIndex++);
-        row_template.replace(/@cell2@/g, CellIndex++);
-        row_template.replace(/@cell3@/g, CellIndex++);
-        $("#tbl" + id).append(row_template);
+        var row_template = $("#row-template").html();
+        row_template = row_template.replace(
+          /@cell1@/g,
+          (CellIndex++).toString()
+        );
+        row_template = row_template.replace(
+          /@cell2@/g,
+          (CellIndex++).toString()
+        );
+        row_template = row_template.replace(
+          /@cell3@/g,
+          (CellIndex++).toString()
+        );
+        $("#tbl" + tableIndex).append(row_template);
       }
     }
   }

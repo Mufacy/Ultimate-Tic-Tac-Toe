@@ -1,5 +1,5 @@
-var Previous_Click; //store previous click incase user wants to change
 var input_type;
+var player = "X";
 
 function game_set() {
   input_type = false;
@@ -46,31 +46,27 @@ function game_set() {
   }
 }
 
-// function cell_click(mycell)
-// {
-//     if (mycell.value == null)
-//     {
-//         label1 = document.getElementById("LBLplayerTurn")
-//         mycell.value = 'O';
-//         if (input_type)
-//         {
-//             mycell.setAttribute("class", "circle");
-//             input_type = !input_type;
-//             mycell.value = 'o';
-//             label1.innerHTML = "Player 1 ( x ) turn";
-//         }
-//         else
-//         {
-//             mycell.setAttribute("class", "Exx");
-//             input_type = !input_type;
-//             mycell.value = 'x';
-//             label1.innerHTML = "Player 1 ( o ) turn";
-//         }
-//         Previous_Click = mycell.id;
-//     }
-// }
+function cell_click(mycell) {
+  //on cell click insert X or O
+  if (mycell.textContent == "") {
+    playerNextMove(mycell);
+  }
+}
 
-function game_start() {
-  Game = document.getElementById("GameContainer");
-  for (i = 0; i < Game.length; i++) {}
+function playerNextMove(cell) {
+  if (player === "X") {
+    //fill cell with current player
+    cell.textContent = "X";
+    cell.style.color = "#E94F37";
+
+    //set next player
+    player = "O";
+    $("#LBLplayerTurn").html("Player ( O ) turn");
+  } else {
+    cell.textContent = "O";
+    cell.style.color = "#F6F7EB";
+
+    player = "X";
+    $("#LBLplayerTurn").html("Player ( X ) turn");
+  }
 }

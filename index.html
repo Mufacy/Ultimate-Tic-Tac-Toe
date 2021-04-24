@@ -22,8 +22,9 @@
 <body>
     <div id="main">
         <div id="sidebar">
-            <input class="Menubutton" type="button" value="set game size" onclick="game_set()" />
             <h2 class="sideMenu" id="LBLplayerTurn">Player 1 ( x ) turn</h2>
+            <input class="Menubutton" type="button" value="set game size" onclick="game_set()" />
+
             <input class="Menubutton" type="button" value="Finish Turn" onclick="" />
         </div>
         <DIV id="GameContainer"></DIV>
@@ -35,9 +36,9 @@
 
 <script id="row-template" type="text">
     <tr> 
-        <td onclick="cell_click(this);" id="@cell1@"> <span> </span> </td>
-        <td onclick="cell_click(this);" id="@cell2@"> <span> </span> </td>
-        <td onclick="cell_click(this);" id="@cell3@"> <span> </span> </td>
+        <td onclick="cell_click(this);" id="@cell1@"></td>
+        <td onclick="cell_click(this);" id="@cell2@"></td>
+        <td onclick="cell_click(this);" id="@cell3@"></td>
     </tr>
 </script>
 

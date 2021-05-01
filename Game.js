@@ -70,3 +70,49 @@ function playerNextMove(cell) {
     $("#LBLplayerTurn").html("Player ( X ) turn");
   }
 }
+
+var counter = 0;
+var count = 0;
+
+function assignGameBoard() {
+  //take the Small XO board from Website  and create array
+  globalBoard = [];
+
+  for (var i = 0; i < 3; i++) {
+    globalBoard[i] = [];
+    for (var j = 0; j < 3; j++) {
+      globalBoard[i][j] = new GlobalBoard();
+    }
+  }
+
+  //var tableindex = 1;
+  for (var k = 0; k < board_size; k++) {
+    for (var f = 0; f < board_size; f++) {
+      //to iterate over all the tables we can simply use the board size
+      // multiplying the k index by the board_size will give us powers of 3
+      // by add the index f will get 0,1,2 and then 3,4,5 and then 6,7,8 etc..
+      tblIndex = k * board_size + f;
+
+      for (var i = 0; i < N; i++) {
+        for (var j = 0; j < N; j++) {
+          if ($("#table" + tblIndex).rows[i].cells[j].innerHTML == "")
+            globalBoard[k][f].localBoard[i][j] = E;
+          else
+            globalBoard[k][f].localBoard[i][j] = $("#table" + tblIndex).rows[
+              i
+            ].cells[j].innerHTML;
+        }
+      }
+    }
+  }
+
+  for (
+    var i = 0;
+    i < N;
+    i++ //check for existing winners
+  ) {
+    for (var j = 0; j < N; j++) {
+      globalBoard[i][j].checkWin();
+    }
+  }
+}
